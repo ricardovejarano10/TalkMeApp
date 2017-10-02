@@ -1,14 +1,42 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-split-pane when="lg">
+  <ion-menu [content]="content">
+    <ion-list no-lines>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+        <div *ngIf="imgsource"  class="avatar">  
+          <ion-card text-center class="hide-card">
+              <img src="{{imgsource}}" class="custom-avatar"/>
+              <h1>{{(perfilDatos | async)?.nickname}}</h1> 
+              <hr>
+          </ion-card>
+        </div> 
+
+        <div *ngIf="imgsource == null"  class="avatar">  
+            <ion-card text-center class="hide-card">
+                <img src="https://firebasestorage.googleapis.com/v0/b/talkmeapp-59cd7.appspot.com/o/profile.jpg?alt=media&token=49342799-8b44-4c47-b37e-b6e13cd246cb" width="20%" class="custom-avatar"/>
+                <h1>Edita tu perfil</h1> 
+                <hr>
+            </ion-card>
+          </div> 
+
+        <!-- <ion-avatar item-start>
+          <div *ngIf="imgsource"  class="avatar">  
+     
+             <img src="{{imgsource}}">
+  
+          </div> 
+          
+          <div *ngIf="imgsource == null">  
+              <img src="https://firebasestorage.googleapis.com/v0/b/talkmeapp-59cd7.appspot.com/o/profile.jpg?alt=media&token=49342799-8b44-4c47-b37e-b6e13cd246cb" width="20%">
+          </div>  
+           
+          </ion-avatar> -->
+         
+      <ion-list-header>Menu</ion-list-header>
+      <button menuClose ion-item  *ngFor="let m of menuOpc; index as i" (click)="setContent(i)">
+        <ion-icon [name]="m.icon" margin-right></ion-icon>{{m.label}}</button>
+      <ion-list-header></ion-list-header>
+      <button ion-item (click)="logout()"><ion-icon name="md-exit" margin-right></ion-icon>Cerrar Sesion</button>
+    </ion-list>
+  </ion-menu>
+  <ion-nav [root]="root" main #content></ion-nav>
+</ion-split-pane>

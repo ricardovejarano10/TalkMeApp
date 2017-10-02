@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <ion-item>
+   <p>SU NICK NAME ES: {{(perfilDatos | async)?.nickname }}</p>  
+</ion-item> -->
+  <ion-item>
+    <ion-label floating>Nickname</ion-label>
+    <ion-input [(ngModel)]="perfil.nickname" required></ion-input>
+    
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input [(ngModel)]="perfil.nombre" required></ion-input>
+    
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Apellido</ion-label>
+    <ion-input [(ngModel)]="perfil.apellido" required></ion-input>
+    
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Edad</ion-label>
+      <ion-input [(ngModel)]="perfil.edad"  type="number" required></ion-input>
+      
+    </ion-item>
+
+  <button ion-button block (click)="store()" color="secondary">Subir Foto</button>
+  <button ion-button block (click)="crearPerfil()">Actualizar Perfil</button>
+
+</ion-content>

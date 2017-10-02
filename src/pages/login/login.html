@@ -1,0 +1,35 @@
+<ion-content padding class="login-bg">
+<div class="login-main">
+
+
+  <div class="login-title">  
+  <h1 class="login-title-font">TalkMe</h1>
+  </div>  
+
+    <ion-row margin-top>
+      <ion-col col-12>
+        <ion-item color="itemLight">
+          <ion-label color="primary" floating>Correo</ion-label>
+          <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
+        </ion-item>
+
+      </ion-col>
+
+      <ion-col col-12 margin-top>
+          <ion-item color="itemLight">
+              <ion-label color="primary" floating>Contraseña</ion-label>
+              <ion-input type="password" color="primary" name="pass" [(ngModel)]="usuario.password" required></ion-input>
+            </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+  
+
+  <ion-row margin-top>
+      <button ion-col col-12 ion-button round (click)="login(usuario)"  class="buttonLogin">Login</button>
+      <button ion-button col-12 clear color="primary" (click)="registro()" class="buttonRegistro">Registro</button>
+  </ion-row>
+  
+</div>
+</ion-content>

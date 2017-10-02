@@ -1,0 +1,37 @@
+page-mapa {
+    
+    [noScroll] {
+        overflow: hidden;
+      }
+
+      .map-wrapper {
+          position: relative;
+ 
+          height: 435px;
+      }
+
+      agm-map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 435px;
+      }
+
+    .login-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: #af0f0f;
+        height:15%;  
+  
+    }
+
+    //se define la fuente a utilizar 
+    .login-title-font{
+        font-family: bernadetteFont;
+        color: white;
+        font-size: 2em;  
+    }
+}
