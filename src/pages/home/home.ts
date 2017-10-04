@@ -12,6 +12,7 @@ import { TiendaPage } from '../tienda/tienda';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Perfil } from '../../models/perfil';
 import firebase from 'firebase';
+import { Storage } from '@ionic/storage';
 
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
@@ -44,6 +45,7 @@ export class HomePage {
   constructor(private fire: AngularFireAuth,
     public fch: FileChooser,
     public zone: NgZone,
+    public storage: Storage,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
 
   }
@@ -91,6 +93,7 @@ export class HomePage {
 
 logout(){
   this.fire.auth.signOut();
+  this.storage.set("logged", false);
   this.navCtrl.setRoot(LoginPage);
 
 }
