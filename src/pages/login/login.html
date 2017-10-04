@@ -8,12 +8,12 @@
 
     <div class="form">  
       <ion-item color="itemLight">
-        <ion-label color="primary" floating>Correo</ion-label>
+        <ion-label color="light" floating>Correo</ion-label>
         <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
       </ion-item>
 
       <ion-item color="itemLight">
-          <ion-label color="primary" floating>Contraseña</ion-label>
+          <ion-label color="light" floating>Contraseña</ion-label>
           <ion-input type="password" color="primary" name="pass" [(ngModel)]="usuario.password" required></ion-input>
       </ion-item>
     </div>
@@ -21,8 +21,8 @@
   </div>
 
   <div text-center class="buttons">  
-    <button ion-col col-12 ion-button round (click)="login(usuario)"  class="buttonLogin">Iniciar Sesión</button>
-    <button ion-button col-12 clear color="primary" (click)="registro()" class="buttonRegistro">Registro</button>
+    <button ion-col col-12 ion-button round (click)="login(usuario)"  class="buttonLogin" color="light">Iniciar Sesión</button>
+    <button ion-button col-12 clear color="light" (click)="registro()" class="buttonRegistro">Registro</button>
   </div>
   
   </div> <!-- cierra la clase login-main -->
