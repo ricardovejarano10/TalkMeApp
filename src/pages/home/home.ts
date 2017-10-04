@@ -53,12 +53,7 @@ export class HomePage {
   ionViewDidLoad() {
       this.fire.authState.take(1).subscribe(data => {
       if(data && data.email && data.uid){  
-        // this.toas.create({
-        //   message: `Bienvenido, ${data.email} `,
-        //   duration: 3000
-        // }).present();
         this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
-
         }else{
           this.toas.create({
             message: `No se encuentra usuario`,
@@ -70,12 +65,9 @@ export class HomePage {
             this.imgsource = url;
           })
         })
-        
+       
     })
-    
-
   }
-
 
   setContent(i){
     switch(i){
@@ -95,10 +87,7 @@ logout(){
   this.fire.auth.signOut();
   this.storage.set("logged", false);
   this.navCtrl.setRoot(LoginPage);
-
-}
-
-
+  }
 
 }
 

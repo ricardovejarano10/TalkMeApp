@@ -1,22 +1,20 @@
 page-login {
 
-    .buttonLogin{
-        margin-top: 20px;
-    }
-
-    .buttonRegistro{
-        margin-top: 10px;
-    }
+    //se define la fuente a utilizar 
 
     .login-title{
-        padding: 50px;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
- 
+        height:100px;
+        padding-top: 80px;
     }
 
-    //se define la fuente a utilizar 
+    .form{
+        padding-top: 60px;
+    }
+
+    .buttons{
+        padding-top: 30px;
+    }
+
     .login-title-font{
         font-family: bernadetteFont;
         color: #af0f0f;
@@ -42,9 +40,9 @@ page-login {
     .login-bg{
         background-color: white;
          //background-image: url('https://firebasestorage.googleapis.com/v0/b/talkmeapp-59cd7.appspot.com/o/login_fondo.jpg?alt=media&token=4dad1d3b-a472-4a9a-99da-65b2c177ce8d');
-         background-repeat: no-repeat;
-         background-position: center;
-         background-size: cover; 
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; 
      }
 
 }
