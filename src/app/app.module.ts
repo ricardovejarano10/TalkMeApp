@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
 
+import { LoginPage } from '../pages/login/login';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { TiendaPage } from '../pages/tienda/tienda';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
@@ -41,6 +42,7 @@ export const firebaseConfig = {
     MyApp,
     PerfilPage,
     MapaPage,
+    LoginPage,
     PerfilUsuarioPage,
     HomePage
   ],
@@ -61,6 +63,7 @@ export const firebaseConfig = {
     MyApp,
     PerfilPage,
     MapaPage,
+    LoginPage,
     PerfilUsuarioPage,
     HomePage
   ],

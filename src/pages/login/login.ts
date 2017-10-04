@@ -7,6 +7,8 @@ import { HomePage } from '../home/home';
 import { PerfilPage } from '../perfil/perfil';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Perfil } from '../../models/perfil';
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -19,6 +21,7 @@ export class LoginPage {
   perfil = {} as Perfil;
 
   constructor(private fire: AngularFireAuth,
+    public storage: Storage,
     private afDatabase: AngularFireDatabase,
     private toas: ToastController,
     public navCtrl: NavController, public navParams: NavParams) {
@@ -29,6 +32,7 @@ export class LoginPage {
     const result = this.fire.auth.signInWithEmailAndPassword(usuario.email, usuario.password)
     .then((authData) => {
       console.log("User created successfully with payload-", authData);
+      this.storage.set("logged", true);
       this.navCtrl.setRoot(HomePage);
     })
     .catch(function(error) {
