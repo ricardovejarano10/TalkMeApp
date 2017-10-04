@@ -9,7 +9,6 @@ import firebase from 'firebase';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
 @IonicPage()
 @Component({
   selector: 'page-mapa',
@@ -18,6 +17,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MapaPage {
 
   perfilDatos: FirebaseObjectObservable<Perfil>
+  perfilAmigos: any;
   imgsource: any;
   firestore = firebase.storage();
   
@@ -39,6 +39,7 @@ export class MapaPage {
 
 
   public ngOnInit(){
+    //this.perfilAmigos = this.afDatabase.list(`/perfil/9OHht2b3oeRp5w6mfu3DeYuKM292/nickname`);
 
     this.fire.authState.take(1).subscribe(data => {
       this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
@@ -51,6 +52,7 @@ export class MapaPage {
 
     this.getUserLocation();
     this.geo.hits.subscribe(hits => this.markers = hits)
+    
   }
 
 

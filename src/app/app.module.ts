@@ -24,6 +24,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../providers/geo/geo';
+import { IonicStorageModule } from '@ionic/storage';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDcfcEziwRVc99v-3JufSLhMYXnsummMeA",
@@ -50,6 +51,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     HttpModule,
     AngularFireAuthModule,
+    IonicStorageModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyCQ96bRQQ7XUw1fBBsc4ocQ3iUzXWzCKpI'
     })
