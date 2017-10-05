@@ -26,7 +26,7 @@ export class MapaPage {
   lng:number;
   zoom:number = 16;
   markers:any;
-  title: string = 'Encuentra personas';
+  title: string = 'Mapa en vivo';
 
   constructor(private fire: AngularFireAuth,
     public zone: NgZone,
@@ -51,7 +51,9 @@ export class MapaPage {
     })
 
     this.getUserLocation();
-    this.geo.hits.subscribe(hits => this.markers = hits)
+    this.geo.hits.subscribe(hits =>
+      this.markers = hits)
+    
     
   }
 
@@ -66,8 +68,7 @@ export class MapaPage {
         this.geo.getLocation(40, [this.lat, this.lng])
 
         this.fire.authState.take(1).subscribe(data => {
-
-        this.geo.setLocation(data.uid, [this.lat, this.lng]);
+          this.geo.setLocation(data.uid, [this.lat, this.lng]);
         })
       });
 

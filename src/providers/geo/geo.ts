@@ -30,9 +30,16 @@ export class GeoProvider {
       radius: radius
     })
     .on('key_entered', (key, location, distance) => {
+      
+      var nombre = "prueba";
+
+      var apellido = "Apellido";
       let hit = {
         location: location,
-        distance: distance
+        distance: distance,
+        key: key,
+        nombre: nombre,
+        apellido: apellido
       }
 
       let currentHints = this.hits.value
