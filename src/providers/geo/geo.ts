@@ -36,26 +36,22 @@ export class GeoProvider {
       radius: radius
     })
     .on('key_entered', (key, location, distance) => {
-    var nombre = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
-      var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
-      var nombreDeUsuario:String = username;
-      console.log("El nombre de usuario es: " + nombreDeUsuario);
+        var nombre = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
+          var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
+          var nombreDeUsuario:String = username;
+          console.log("El nombre de usuario es: " + nombreDeUsuario);
 
-    });
-    
-
-      var apellido = "Apellido";
+        });
+      
       let hit = {
         location: location,
         distance: distance,
-        key: key,
-        
-        apellido: apellido
+        key: key
       }
       let currentHints = this.hits.value
       currentHints.push(hit)
       this.hits.next(currentHints)
-  
+ 
   })
   
 
