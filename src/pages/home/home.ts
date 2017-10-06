@@ -18,10 +18,12 @@ import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   root:any = MapaPage;
   nativepath: any;
@@ -30,7 +32,7 @@ export class HomePage {
   imgsource: any;
   estado: any;
 
-  
+ 
   
 
   menuOpc: Menu[] = [

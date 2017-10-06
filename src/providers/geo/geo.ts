@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import * as GeoFire from "geofire"
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Perfil } from '../../models/perfil';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
+
 
 @Injectable()
 export class GeoProvider {
-
+ 
+  urlPerfil = "https://talkmeapp-59cd7.firebaseio.com/perfil/";
   dbref:any;
   geoFire:any;
 
   hits = new BehaviorSubject([])
+  perfilDatos: FirebaseObjectObservable<Perfil>
 
-
-  constructor(private db: AngularFireDatabase) {
+  constructor(private fire: AngularFireAuth,private db: AngularFireDatabase, public http:Http,
+    private afDatabase: AngularFireDatabase,) {
     this.dbref = this.db.list('/locations');
     this.geoFire = new GeoFire(this.dbref.$ref);
   }
@@ -30,22 +36,28 @@ export class GeoProvider {
       radius: radius
     })
     .on('key_entered', (key, location, distance) => {
-      
-      var nombre = "prueba";
+    var nombre = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
+      var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
+      var nombreDeUsuario:String = username;
+      console.log("El nombre de usuario es: " + nombreDeUsuario);
+
+    });
+    
 
       var apellido = "Apellido";
       let hit = {
         location: location,
         distance: distance,
         key: key,
-        nombre: nombre,
+        
         apellido: apellido
       }
-
       let currentHints = this.hits.value
       currentHints.push(hit)
       this.hits.next(currentHints)
-    })
+  
+  })
+  
 
   }
 
