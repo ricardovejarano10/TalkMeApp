@@ -11,7 +11,8 @@ import firebase from 'firebase';
 
 @Injectable()
 export class GeoProvider {
- 
+
+  
   urlPerfil = "https://talkmeapp-59cd7.firebaseio.com/perfil/";
   dbref:any;
   geoFire:any;
@@ -36,13 +37,7 @@ export class GeoProvider {
       radius: radius
     })
     .on('key_entered', (key, location, distance) => {
-        var nombre = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
-          var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
-          var nombreDeUsuario:String = username;
-          console.log("El nombre de usuario es: " + nombreDeUsuario);
-
-        });
-      
+              
       let hit = {
         location: location,
         distance: distance,
@@ -51,11 +46,13 @@ export class GeoProvider {
       let currentHints = this.hits.value
       currentHints.push(hit)
       this.hits.next(currentHints)
- 
+      
   })
   
 
   }
+
+
 
 
 }

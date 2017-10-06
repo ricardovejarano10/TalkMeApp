@@ -15,7 +15,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'mapa.html',
 })
 export class MapaPage {
-
   perfilDatos: FirebaseObjectObservable<Perfil>
   perfilAmigos: any;
   imgsource: any;
@@ -74,6 +73,16 @@ export class MapaPage {
 
     }
 
+  }
+
+  funcionMarcador(key: string){
+    var nombre: any = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
+      var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
+      var nombreDeAmigos = username;
+      console.log("El nombre de usuario es: " + nombreDeAmigos);
+
+    });
+    
   }
   
 
