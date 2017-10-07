@@ -12,6 +12,7 @@ import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
 
+import { ModalPerfilPage } from '../pages/modal-perfil/modal-perfil';
 import { LoginPage } from '../pages/login/login';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { TiendaPage } from '../pages/tienda/tienda';

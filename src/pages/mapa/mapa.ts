@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../../providers/geo/geo';
@@ -8,6 +8,8 @@ import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ModalPerfilPage } from '../modal-perfil/modal-perfil';
+
 
 @IonicPage()
 @Component({
@@ -31,7 +33,8 @@ export class MapaPage {
     public zone: NgZone,
     private afDatabase: AngularFireDatabase,
     private geo: GeoProvider,public navCtrl: NavController, 
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    private modal:ModalController) {
 
     }
 
@@ -75,16 +78,19 @@ export class MapaPage {
 
   }
 
-  funcionMarcador(key: string){
+  abrirModalPerfil(key: string){
     var nombre: any = firebase.database().ref('/perfil/' + key).once('value').then(function(snapshot) {
       var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
       var nombreDeAmigos = username;
       console.log("El nombre de usuario es: " + nombreDeAmigos);
 
     });
-    
+  
+    const myModal = this.modal.create('ModalPerfilPage',{key:key});
+    myModal.present();
   }
   
+
 
 }
 
