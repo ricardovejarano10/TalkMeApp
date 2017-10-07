@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="forApp">
     <ion-title>Perfil</ion-title>
     <ion-buttons end>
       <button ion-button (click)="cerrarModal()">cerrar</button>
@@ -12,7 +12,11 @@
 
 <ion-content padding>
 
+  <img src="{{imgsource}}">
 
+  <h2 col-12>{{(perfilDatos | async)?.nickname}}</h2>
+  <h2 col-12>{{(perfilDatos | async)?.nombre}} {{(perfilDatos | async)?.apellido}}</h2>
+  <h2 col-12>{{(perfilDatos | async)?.edad}}</h2>
 
 
 
