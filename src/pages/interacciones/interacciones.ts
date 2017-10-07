@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
 
-/**
- * Generated class for the InteraccionesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +13,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InteraccionesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: Observable<firebase.User>;
+  items: FirebaseListObservable<any[]>;
+  msgVal: string = '';
+
+
+
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase,
+              public navCtrl: NavController, public navParams: NavParams) {
+                this.items = af.list('/messages', {
+                  query: {
+                    limitToLast: 50
+                  }
+                });
+            
+                this.user = this.afAuth.authState;
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InteraccionesPage');
-  }
+  ionViewDidLoad() {}
 
+Send(desc: string) {
+    this.items.push({ message: desc});
+    this.msgVal = '';
+}
 }

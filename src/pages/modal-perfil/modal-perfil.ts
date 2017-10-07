@@ -6,6 +6,7 @@ import { Perfil } from '../../models/perfil';
 import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
 import { MapaPage } from '../mapa//mapa';
+import { InteraccionesPage } from '../interacciones/interacciones';
 
 @IonicPage()
 @Component({
@@ -36,10 +37,12 @@ export class ModalPerfilPage {
 
   cerrarModal(){
      this.view.dismiss();
+
   }
 
   chatear(){
-    this.view.dismiss();
+   // this.view.dismiss();
+    this.navCtrl.push(InteraccionesPage);
     
   }
 }

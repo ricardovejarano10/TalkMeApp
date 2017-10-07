@@ -45,6 +45,7 @@ export const firebaseConfig = {
     PerfilPage,
     MapaPage,
     LoginPage,
+    InteraccionesPage,
     PerfilUsuarioPage,
     HomePage
   ],
@@ -66,6 +67,7 @@ export const firebaseConfig = {
     PerfilPage,
     MapaPage,
     LoginPage,
+    InteraccionesPage,
     PerfilUsuarioPage,
     HomePage
   ],
