@@ -34,13 +34,17 @@ export class PerfilUsuarioPage {
       })
     })
   }
+
+  cargarPerfil(){
+    
+
+  }
+
+
   editarPerfil(){
     this.navCtrl.push(PerfilPage);
   }
 
-  refresh(refresher) {
-    this.navCtrl.setRoot(MapaPage);
-  }
 
 
 

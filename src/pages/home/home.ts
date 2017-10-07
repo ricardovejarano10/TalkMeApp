@@ -86,8 +86,6 @@ export class HomePage {
 }
 
 logout(){
-  
-  
   const key = firebase.auth().currentUser.uid;
   this.afDatabase.database.ref(`locations/${key}`).remove();
   this.fire.auth.signOut();

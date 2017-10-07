@@ -12,26 +12,29 @@
   <div class="map-wrapper">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <agm-marker [latitude]="lat" [longitude]="lng"
-          [iconUrl]="'https://maps.google.com/mapfiles/kml/shapes/library_maps.png'">
+          [iconUrl]="'https://cdn1.iconfinder.com/data/icons/twitter-ui-colored/48/JD-22-48.png'">
 
           <agm-info-window>
-
-            <h3><strong>{{(perfilDatos | async)?.nombre}} {{(perfilDatos | async)?.apellido}}</strong></h3>
+            <h3>Tú</h3>
+            <!-- <h3><strong>{{(perfilDatos | async)?.nombre}} {{(perfilDatos | async)?.apellido}}</strong></h3> -->
           </agm-info-window>
 
         </agm-marker>
 
         <div *ngFor="let marker of markers">
+          <!-- <div *ngIf="marker.key != keyUsuario"> -->
           <agm-marker [latitude]="marker.location[0]" [longitude]="marker.location[1]"
               [iconUrl]="'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-32.png'"
               *ngIf="marker.location[0] != lat && marker.location[1] != lng" >
           
             <agm-info-window>
               <h3><strong>Quieres hablarme?</strong></h3>
+              <!-- <h1>{{marker.key}}</h1> -->
               <button col-6 (click)="abrirModalPerfil(marker.key)" ion-button color="forApp">Conóceme</button>
 
             </agm-info-window>
           </agm-marker>
+          <!-- </div> -->
         </div> 
       
 
@@ -39,8 +42,8 @@
   </div>
   
   <div class="login-title">  
-    <h1 class="login-title-font">{{ title }}</h1>
- 
+    <h4 class="login-title-font">{{ title }}</h4>
+    <!-- <button (click)="refresh()" ion-button color="light" margin-top>Refrescar Mapa</button> -->
   </div>  
   <div>
     <!-- {{perfilAmigos.nickname}} -->

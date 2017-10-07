@@ -21,13 +21,13 @@ export class MapaPage {
   perfilAmigos: any;
   imgsource: any;
   firestore = firebase.storage();
-  
+ 
 
   lat: number;
   lng:number;
   zoom:number = 16;
   markers:any;
-  title: string = 'Mapa en vivo';
+  title: string = 'Habla con alguien';
 
   constructor(private fire: AngularFireAuth,
     public zone: NgZone,
@@ -41,9 +41,7 @@ export class MapaPage {
 
 
   public ngOnInit(){
-    //this.perfilAmigos = this.afDatabase.list(`/perfil/9OHht2b3oeRp5w6mfu3DeYuKM292/nickname`);
-
-    this.fire.authState.take(1).subscribe(data => {
+     this.fire.authState.take(1).subscribe(data => {
       this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
       this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) =>{
         this.zone.run(() => {
@@ -55,8 +53,11 @@ export class MapaPage {
     this.getUserLocation();
     this.geo.hits.subscribe(hits =>
       this.markers = hits)
+    //  var keyUsuario = firebase.auth().currentUser.uid;
     
-    
+  }
+  refresh(){
+    this.ngOnInit();
   }
 
 
