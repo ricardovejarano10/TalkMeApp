@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Perfil } from '../../models/perfil';
 import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
-
+import { MapaPage } from '../mapa//mapa';
 
 @IonicPage()
 @Component({
@@ -38,4 +38,8 @@ export class ModalPerfilPage {
      this.view.dismiss();
   }
 
+  chatear(){
+    this.view.dismiss();
+    
+  }
 }

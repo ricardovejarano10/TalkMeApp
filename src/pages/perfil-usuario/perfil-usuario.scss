@@ -6,11 +6,18 @@ page-perfil-usuario {
     }
 
     .posicionAvatar{
+        padding-top: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
 
+    .customProfile{
+        padding-top: 10px;
+    }
 
+    .etiquetas{
+        color: #af0f0f;
+    }
 
 }

@@ -1,3 +1,22 @@
 page-modal-perfil {
+    .avatar {
+        width:200px;
+        height:200px;
+        border-radius:150px;
+    }
+    .posicionAvatar{
+        padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .customProfile{
+        padding-top: 10px;
+    }
+
+    .etiquetas{
+        color: #af0f0f;
+    }
 
 }

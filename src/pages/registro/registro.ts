@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { AlertController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -28,8 +29,9 @@ async registro(usuario: Usuario){
         subTitle: 'Ahora puede iniciar sesión',
         
       });
+      this.navCtrl.setRoot(LoginPage);
       alert.present();
-      this.navCtrl.setRoot('LoginPage');
+      
 
     })
     .catch(function(error) {

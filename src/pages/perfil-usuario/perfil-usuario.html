@@ -26,13 +26,16 @@
     
   </ion-avatar>
 
-
-  <h2 col-12>{{(perfilDatos | async)?.nickname}}</h2>
-  <h2 col-12>{{(perfilDatos | async)?.nombre}} {{(perfilDatos | async)?.apellido}}</h2>
-  <h2 col-12>{{(perfilDatos | async)?.edad}}</h2>
-
-
-  <button ion-button block (click)="editarPerfil()" color="primary">Editar Perfil</button>
-
+  <div class="customProfile" text-center>
+    <p class="etiquetas">Nickname</p>
+    <p>{{(perfilDatos | async)?.nickname}}</p>
+    <p class="etiquetas">Nombre</p>
+    <p>{{(perfilDatos | async)?.nombre}} {{(perfilDatos | async)?.apellido}}</p>
+    <p class="etiquetas">Edad</p>
+    <p>{{(perfilDatos | async)?.edad}}</p>
+  </div>  
+  <div text-center>
+  <button ion-button block (click)="editarPerfil()" color="forApp">Editar Perfil</button>
+  </div>
 
 </ion-content>

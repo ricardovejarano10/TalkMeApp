@@ -13,7 +13,7 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { Perfil } from '../../models/perfil';
 import firebase from 'firebase';
 import { Storage } from '@ionic/storage';
-
+import { GeoProvider } from '../../providers/geo/geo';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
@@ -47,7 +47,7 @@ export class HomePage {
   constructor(private fire: AngularFireAuth,
     public fch: FileChooser,
     public zone: NgZone,
-    public storage: Storage,
+    public storage: Storage,private geo: GeoProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
 
   }
@@ -86,6 +86,10 @@ export class HomePage {
 }
 
 logout(){
+  
+  
+  const key = firebase.auth().currentUser.uid;
+  this.afDatabase.database.ref(`locations/${key}`).remove();
   this.fire.auth.signOut();
   this.storage.set("logged", false);
   this.navCtrl.setRoot(LoginPage);
