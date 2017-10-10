@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the TiendaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Tienda } from '../../providers/tienda-data/tienda';
+import { TiendaDataProvider } from '../../providers/tienda-data/tienda-data';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TiendaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  items: Tienda[] = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: TiendaDataProvider) {
+    this.items = service.data;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TiendaPage');
+  }
+  comprar(){
+    alert('Comprar en PlayStore')
   }
 
 }

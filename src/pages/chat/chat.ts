@@ -5,7 +5,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Perfil } from '../../models/perfil';
 import firebase from 'firebase';
 import { PerfilUsuarioPage } from '../perfil-usuario/perfil-usuario';
-
+import { MapaPage } from '../mapa/mapa';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-chat',
@@ -13,9 +14,11 @@ import { PerfilUsuarioPage } from '../perfil-usuario/perfil-usuario';
 })
 export class ChatPage {
 
+  perfilDatosUs: FirebaseObjectObservable<Perfil>
   perfilDatos: FirebaseObjectObservable<Perfil>
   nickname: String = '';
   key: any;
+  keyUsuarioChat:any;
   username: String = '';
   message: String = '';
   s;
@@ -30,6 +33,8 @@ export class ChatPage {
     this.perfilDatos = this.db.object(`perfil/${this.key}`)
     
     var keyUs = this.navParams.get('keyUs');
+    this.keyUsuarioChat = keyUs;
+    this.perfilDatosUs = this.db.object(`perfil/${this.keyUsuarioChat}`)
     this.s = this.db.list(`/chat/${this.key}${keyUs}`).subscribe(data => {
     this.messages = data;      
 
@@ -64,6 +69,10 @@ export class ChatPage {
 
       this.message = '';
   }
+}
+
+cerrarChat(){
+  this.navCtrl.pop();
 }
 
   ionViewDidLoad() { }

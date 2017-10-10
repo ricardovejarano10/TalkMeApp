@@ -29,6 +29,7 @@ import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../providers/geo/geo';
 import { IonicStorageModule } from '@ionic/storage';
+import { TiendaDataProvider } from '../providers/tienda-data/tienda-data';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDcfcEziwRVc99v-3JufSLhMYXnsummMeA",
@@ -47,7 +48,9 @@ export const firebaseConfig = {
     MapaPage,
     LoginPage,
     ChatPage,
+    TiendaPage,
     PerfilUsuarioPage,
+    FavoritosPage,
     HomePage
   ],
   imports: [
@@ -69,7 +72,9 @@ export const firebaseConfig = {
     MapaPage,
     LoginPage,
     ChatPage,
+    TiendaPage,
     PerfilUsuarioPage,
+    FavoritosPage,
     HomePage
   ],
   providers: [
@@ -80,7 +85,8 @@ export const firebaseConfig = {
     FilePath,
     //File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GeoProvider
+    GeoProvider,
+    TiendaDataProvider
   ]
 })
 export class AppModule {}

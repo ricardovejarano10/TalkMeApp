@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Perfil } from '../../models/perfil';
 import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
-import { MapaPage } from '../mapa//mapa';
+import { MapaPage } from '../mapa/mapa';
 import { ChatPage } from '../chat/chat';
 
 
@@ -43,7 +43,7 @@ export class ModalPerfilPage {
   chatear(){
    // this.view.dismiss();
    const keyUs = this.navParams.get('key');
-    this.navCtrl.push(ChatPage, {keyUs:keyUs});
+    this.navCtrl.setRoot(ChatPage, {keyUs:keyUs});
     
   }
 }

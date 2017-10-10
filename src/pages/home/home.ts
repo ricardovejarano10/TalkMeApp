@@ -36,10 +36,9 @@ export class HomePage {
   
 
   menuOpc: Menu[] = [
-    { label: 'Perfil', icon: 'home' },
-    { label: 'Chat', icon: 'md-beer' },
-    { label: 'Favoritos', icon: 'md-pizza' },
-    { label: 'Tienda', icon: 'md-restaurant' }
+    { label: 'Perfil', icon: 'md-person' },
+    { label: 'Amigos', icon: 'md-contacts' },
+    { label: 'Tienda', icon: 'md-cart' }
 
   ]
 
@@ -75,11 +74,9 @@ export class HomePage {
     switch(i){
       case 0:this.navCtrl.push(PerfilUsuarioPage);
       break;
-      case 1: this.navCtrl.push(ChatPage);
+      case 1: this.navCtrl.push(FavoritosPage);
       break;
-      case 2: this.navCtrl.push(FavoritosPage);
-      break;
-      case 3: this.navCtrl.push(TiendaPage);
+      case 2: this.navCtrl.push(TiendaPage);
       break;
     } 
   
