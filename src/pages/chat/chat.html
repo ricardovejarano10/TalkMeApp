@@ -12,7 +12,7 @@
 <div id="chatMessages">
 
   <div class="message" *ngFor="let message of messages" >
-    <div [class]="message.key == 'sPbVrwVCcdMUR3xmxiQ5MqrTohI3' 
+    <div [class]="message.key == key 
       ? 'innerMessage messageRight' : 'innerMessage messageLeft'">
       <!-- <div class="username">{{(perfilDatos | async)?.nickname}}</div> -->
       <div class="message">{{message.message}}</div>

@@ -38,12 +38,12 @@ export class ModalPerfilPage {
 
   cerrarModal(){
      this.view.dismiss();
-
   }
 
   chatear(){
    // this.view.dismiss();
-    this.navCtrl.push(ChatPage);
+   const keyUs = this.navParams.get('key');
+    this.navCtrl.push(ChatPage, {keyUs:keyUs});
     
   }
 }

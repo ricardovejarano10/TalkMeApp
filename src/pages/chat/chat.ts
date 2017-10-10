@@ -29,8 +29,8 @@ export class ChatPage {
     
     this.perfilDatos = this.db.object(`perfil/${this.key}`)
     
-    
-    this.s = this.db.list('/chat').subscribe(data => {
+    var keyUs = this.navParams.get('keyUs');
+    this.s = this.db.list(`/chat/${this.key}${keyUs}`).subscribe(data => {
     this.messages = data;      
 
     });
@@ -38,9 +38,11 @@ export class ChatPage {
   }
 
   send(){
-    
+     
     if(this.message){
-    this.db.list('/chat').push({
+      var keyUs = this.navParams.get('keyUs');
+      console.log(keyUs); 
+      this.db.list(`/chat/${this.key}${keyUs}`).push({
       key: this.key,
       username: this.username,
       message: this.message
@@ -49,6 +51,16 @@ export class ChatPage {
       }).catch(()=>{
         //Por si se presenta algún error
       })
+
+      this.db.list(`/chat/${keyUs}${this.key}`).push({
+        key: this.key,
+        username: this.username,
+        message: this.message
+        }).then(() => {
+          //Lo que sucede si se hace la actualización correcta
+        }).catch(()=>{
+          //Por si se presenta algún error
+        })
 
       this.message = '';
   }
