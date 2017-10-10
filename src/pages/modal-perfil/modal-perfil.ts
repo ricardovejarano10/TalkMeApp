@@ -6,8 +6,7 @@ import { Perfil } from '../../models/perfil';
 import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
 import { MapaPage } from '../mapa//mapa';
-import { InteraccionesPage } from '../interacciones/interacciones';
-
+import { ChatPage } from '../chat/chat';
 @IonicPage()
 @Component({
   selector: 'page-modal-perfil',
@@ -42,7 +41,7 @@ export class ModalPerfilPage {
 
   chatear(){
    // this.view.dismiss();
-    this.navCtrl.push(InteraccionesPage);
+    this.navCtrl.push(ChatPage);
     
   }
 }

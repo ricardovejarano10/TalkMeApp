@@ -14,10 +14,11 @@ import { FilePath } from '@ionic-native/file-path';
 
 import { ModalPerfilPage } from '../pages/modal-perfil/modal-perfil';
 import { LoginPage } from '../pages/login/login';
+import { ChatPage } from '../pages/chat/chat';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { TiendaPage } from '../pages/tienda/tienda';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
-import { InteraccionesPage } from '../pages/interacciones/interacciones';
+
 import { PerfilPage } from '../pages/perfil/perfil';
 import { MapaPage } from '../pages/mapa/mapa';
 import { HomePage } from '../pages/home/home';
@@ -45,7 +46,7 @@ export const firebaseConfig = {
     PerfilPage,
     MapaPage,
     LoginPage,
-    InteraccionesPage,
+    ChatPage,
     PerfilUsuarioPage,
     HomePage
   ],
@@ -67,7 +68,7 @@ export const firebaseConfig = {
     PerfilPage,
     MapaPage,
     LoginPage,
-    InteraccionesPage,
+    ChatPage,
     PerfilUsuarioPage,
     HomePage
   ],

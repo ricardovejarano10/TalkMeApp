@@ -3,10 +3,10 @@ import { NavController, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Usuario } from '../../models/usuario';
 import { LoginPage } from '../login/login';
+import { ChatPage } from '../chat/chat';
 import { MapaPage } from '../mapa/mapa';
 import { PerfilPage } from '../perfil/perfil';
 import { PerfilUsuarioPage } from '../perfil-usuario/perfil-usuario';
-import { InteraccionesPage } from '../interacciones/interacciones';
 import { FavoritosPage } from '../favoritos/favoritos';
 import { TiendaPage } from '../tienda/tienda';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
@@ -37,7 +37,7 @@ export class HomePage {
 
   menuOpc: Menu[] = [
     { label: 'Perfil', icon: 'home' },
-    { label: 'Interacciones', icon: 'md-beer' },
+    { label: 'Chat', icon: 'md-beer' },
     { label: 'Favoritos', icon: 'md-pizza' },
     { label: 'Tienda', icon: 'md-restaurant' }
 
@@ -75,7 +75,7 @@ export class HomePage {
     switch(i){
       case 0:this.navCtrl.push(PerfilUsuarioPage);
       break;
-      case 1: this.navCtrl.push(InteraccionesPage);
+      case 1: this.navCtrl.push(ChatPage);
       break;
       case 2: this.navCtrl.push(FavoritosPage);
       break;
