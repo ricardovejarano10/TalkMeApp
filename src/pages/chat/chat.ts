@@ -4,6 +4,8 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Perfil } from '../../models/perfil';
 import firebase from 'firebase';
+import { PerfilUsuarioPage } from '../perfil-usuario/perfil-usuario';
+
 
 @Component({
   selector: 'page-chat',
@@ -12,9 +14,9 @@ import firebase from 'firebase';
 export class ChatPage {
 
   perfilDatos: FirebaseObjectObservable<Perfil>
-
+  nickname: String = '';
   key: any;
- // username: String = '';
+  username: String = '';
   message: String = '';
   s;
   messages: object[] = [];
@@ -24,7 +26,9 @@ export class ChatPage {
 
     var user = firebase.auth().currentUser;
     this.key = user.uid;
-    this.perfilDatos = this.db.object(`perfil/${this.key}`);
+    
+    this.perfilDatos = this.db.object(`perfil/${this.key}`)
+    
     
     this.s = this.db.list('/chat').subscribe(data => {
     this.messages = data;      
@@ -34,8 +38,11 @@ export class ChatPage {
   }
 
   send(){
+    
+    if(this.message){
     this.db.list('/chat').push({
-      username: this.key,
+      key: this.key,
+      username: this.username,
       message: this.message
       }).then(() => {
         //Lo que sucede si se hace la actualización correcta
@@ -45,6 +52,7 @@ export class ChatPage {
 
       this.message = '';
   }
+}
 
   ionViewDidLoad() { }
 
