@@ -17,7 +17,7 @@ export class PerfilUsuarioPage {
   perfilDatos: FirebaseObjectObservable<Perfil>
   imgsource: any;
   firestore = firebase.storage();
-
+  estado: number = 0;
   constructor(private fire: AngularFireAuth,
     public zone: NgZone,
     private afDatabase: AngularFireDatabase,
@@ -30,6 +30,7 @@ export class PerfilUsuarioPage {
       this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) =>{
         this.zone.run(() => {
           this.imgsource = url;
+          this.estado = 1;
         })
       })
     })

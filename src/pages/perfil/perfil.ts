@@ -10,6 +10,8 @@ import { FilePath } from '@ionic-native/file-path';
 import firebase from 'firebase';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { MapaPage } from '../mapa/mapa';
+
 
 
 @IonicPage()
@@ -91,8 +93,14 @@ export class PerfilPage {
 
   crearPerfil(){
     this.fire.authState.take(1).subscribe(auth => {
+      const alert = this.alertCtrl.create({
+        title: 'Información Actualizada',
+               
+      });
       this.afDatabase.object(`perfil/${auth.uid}`).set(this.perfil)
-      .then(() => this.navCtrl.pop())  
+      .then(() => this.navCtrl.setRoot(HomePage, {key:auth.uid}));
+                  alert.present();  
     })
+
   }
 }

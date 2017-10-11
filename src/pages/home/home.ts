@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Usuario } from '../../models/usuario';
 import { LoginPage } from '../login/login';
@@ -31,7 +31,7 @@ export class HomePage {
   perfilDatos: FirebaseObjectObservable<Perfil>
   imgsource: any;
   estado: any;
-
+  key: string = '';
  
   
 
@@ -46,9 +46,12 @@ export class HomePage {
   constructor(private fire: AngularFireAuth,
     public fch: FileChooser,
     public zone: NgZone,
+    public navParams: NavParams,
     public storage: Storage,private geo: GeoProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
-
+      const keyUs= this.navParams.get('key');
+      this.key = keyUs;
+      console.log('A la pagina home está llegando la clave: '+this.key);
   }
 
   ionViewDidLoad() {

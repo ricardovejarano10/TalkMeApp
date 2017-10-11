@@ -1,5 +1,5 @@
 <ion-split-pane when="lg">
-  <ion-menu [content]="content">
+  <ion-menu [content]="content" >
     <ion-list no-lines>
 
         <div *ngIf="imgsource"  class="avatar">  
@@ -38,5 +38,5 @@
       <button ion-item (click)="logout()"><ion-icon name="md-exit" margin-right></ion-icon>Cerrar Sesion</button>
     </ion-list>
   </ion-menu>
-  <ion-nav [root]="root" main #content></ion-nav>
+  <ion-nav [root]="root" [rootParams]="key" main #content></ion-nav>
 </ion-split-pane>

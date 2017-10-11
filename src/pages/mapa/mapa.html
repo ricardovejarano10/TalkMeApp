@@ -25,7 +25,7 @@
           <!-- <div *ngIf="marker.key != keyUsuario"> -->
           <agm-marker [latitude]="marker.location[0]" [longitude]="marker.location[1]"
               [iconUrl]="'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-32.png'"
-              *ngIf="marker.location[0] != lat && marker.location[1] != lng" >
+              *ngIf="marker.key != key" >
           
             <agm-info-window>
               <h3><strong>Quieres hablarme?</strong></h3>

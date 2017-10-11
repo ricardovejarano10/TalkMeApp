@@ -8,6 +8,7 @@ import { PerfilPage } from '../perfil/perfil';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Perfil } from '../../models/perfil';
 import { Storage } from '@ionic/storage';
+import firebase from 'firebase';
 
 
 @IonicPage()
@@ -19,6 +20,7 @@ export class LoginPage {
 
   usuario = {} as Usuario;
   perfil = {} as Perfil;
+  key: string = '';
 
   constructor(private fire: AngularFireAuth,
     public storage: Storage,
@@ -33,7 +35,10 @@ export class LoginPage {
     .then((authData) => {
       console.log("User created successfully with payload-", authData);
       this.storage.set("logged", true);
-      this.navCtrl.setRoot(HomePage);
+      const key = firebase.auth().currentUser.uid;
+      this.key = key;
+      console.log('La pagina de login pasa la siguiente llave: '+ this.key);
+      this.navCtrl.setRoot(HomePage, {key:this.key});
     })
     .catch(function(error) {
       var errorCode = error.message;

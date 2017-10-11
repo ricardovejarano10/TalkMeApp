@@ -21,7 +21,7 @@ export class MapaPage {
   perfilAmigos: any;
   imgsource: any;
   firestore = firebase.storage();
- 
+  key: string = '';
 
   lat: number;
   lng:number;
@@ -35,7 +35,9 @@ export class MapaPage {
     private geo: GeoProvider,public navCtrl: NavController, 
     public navParams: NavParams,
     private modal:ModalController) {
-
+    const keyUs=  navParams.data;
+    this.key = keyUs;
+    console.log('A a pagina de mapa esta llegando la clave: '+this.key);
     }
 
 
@@ -50,10 +52,13 @@ export class MapaPage {
       })
     })
 
+     //var user = firebase.auth().currentUser;
+    //this.key = user.uid;
     this.getUserLocation();
+    console.log('El uid del usuario actual es: '+this.key);
     this.geo.hits.subscribe(hits =>
       this.markers = hits)
-    //  var keyUsuario = firebase.auth().currentUser.uid;
+     
     
   }
   refresh(){

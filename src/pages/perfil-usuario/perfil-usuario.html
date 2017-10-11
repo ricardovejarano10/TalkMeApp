@@ -19,7 +19,7 @@
 
   <div *ngIf="imgsource == null">  
       <div class="posicionAvatar"> 
-      <!-- <img src="https://firebasestorage.googleapis.com/v0/b/talkmeapp-59cd7.appspot.com/o/profile.jpg?alt=media&token=49342799-8b44-4c47-b37e-b6e13cd246cb" width="20%"> -->
+      <img src="https://firebasestorage.googleapis.com/v0/b/talkmeapp-59cd7.appspot.com/o/profile.jpg?alt=media&token=49342799-8b44-4c47-b37e-b6e13cd246cb" class="avatar">
       </div>
     </div>  
     
@@ -34,7 +34,7 @@
     <p>{{(perfilDatos | async)?.edad}}</p>
   </div>  
   <div text-center>
-  <button ion-button block (click)="editarPerfil()" color="forApp">Editar Perfil</button>
+  <button ion-button round (click)="editarPerfil()" color="forApp">Editar Perfil</button>
   </div>
 
 </ion-content>
