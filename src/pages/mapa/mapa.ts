@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../../providers/geo/geo';
@@ -36,14 +36,25 @@ export class MapaPage {
 
   constructor(private fire: AngularFireAuth, public zone: NgZone, public storage: Storage,
     private afDatabase: AngularFireDatabase, private geo: GeoProvider, public navCtrl: NavController,
-    public navParams: NavParams, private modal: ModalController, public timer: TimerProvider) {
+    public navParams: NavParams, private modal: ModalController,
+    public timer: TimerProvider, public event:Events) {
    
     //Se recupera la variable id de storage que contiene la UID del usuario actual
     this.storage.get("id").then(val => {
         this.key2 = val;
         console.log('la llave 2 en mapa es: '+ this.key2)
       })
-      this.geo.refUb(this.key2);  
+
+      this.tarea = setInterval(() => {
+        this.a = this.a +1;
+        console.log('El valor de a es: '+this.a)
+        this.ngOnInit();
+        this.event.publish('marcador', this.tarea)
+      },5000);
+
+
+
+      //this.geo.refUb(this.key2);  
 
   }//Cierra el constructor
 

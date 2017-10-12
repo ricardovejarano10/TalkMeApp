@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, ToastController, NavParams } from 'ionic-angular';
+import { NavController, ToastController, NavParams, Events } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Usuario } from '../../models/usuario';
 import { LoginPage } from '../login/login';
@@ -45,7 +45,7 @@ export class HomePage {
   usuario = {} as Usuario;
   constructor(private fire: AngularFireAuth,
     public fch: FileChooser,
-    public zone: NgZone,
+    public zone: NgZone, public event: Events,
     public navParams: NavParams,
     public storage: Storage,private geo: GeoProvider, public timer: TimerProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
@@ -86,8 +86,12 @@ export class HomePage {
 }
 
 logout(){
-  this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
-  console.log('Sale del timer')
+  this.event.subscribe('marcador', (data) => {
+    data = clearInterval(data);
+    console.log('Timer detenido');
+  })
+  //this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
+  //console.log('Sale del timer')
   const key = firebase.auth().currentUser.uid;
   this.afDatabase.database.ref(`locations/${key}`).remove();
   this.fire.auth.signOut();
