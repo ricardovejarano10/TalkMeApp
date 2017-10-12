@@ -29,6 +29,7 @@ export class MapaPage {
   lng: number;
   zoom: number = 16;
   markers: any;
+  markersGeo: any;
   title: string = 'Habla con alguien';
   tarea;
   a = 0;
@@ -58,7 +59,7 @@ export class MapaPage {
         })
       })
     })
-
+    
     this.getUserLocation();
     this.geo.hits.subscribe(hits =>
       this.markers = hits)

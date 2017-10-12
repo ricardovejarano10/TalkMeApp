@@ -22,6 +22,8 @@ export class GeoProvider {
   geoFire:any;
   keyActual: string;
 
+  markersGeo: any;
+
   hits = new BehaviorSubject([])
   perfilDatos: FirebaseObjectObservable<Perfil>
 
@@ -60,8 +62,6 @@ export class GeoProvider {
   refUb(key2: string){
     this.keyActual = key2;
     this.refrescarUbicacion = setInterval(() => {
-      this.a = this.a + 1;
-
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           this.lat = position.coords.latitude;
@@ -70,14 +70,15 @@ export class GeoProvider {
           this.fire.authState.take(1).subscribe(data => {
           console.log('La llave para mapear es: ' + data.uid);
           this.setLocation(data.uid, [this.lat, this.lng]);  
+          this.getLocation(40, [this.lat, this.lng]);  
+          this.hits.subscribe(hits => {
+            this.markersGeo = hits;
+          })
         });
         
         });
       }
-
-      
-      console.log('El valor de a es: ' + this.a);
-    },4000)
+    },8000)
 
   }
 
