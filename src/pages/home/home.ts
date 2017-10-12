@@ -17,7 +17,7 @@ import { GeoProvider } from '../../providers/geo/geo';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
-
+import { TimerProvider } from '../../providers/timer/timer';
 
 @Component({
   selector: 'page-home',
@@ -47,7 +47,7 @@ export class HomePage {
     public fch: FileChooser,
     public zone: NgZone,
     public navParams: NavParams,
-    public storage: Storage,private geo: GeoProvider,
+    public storage: Storage,private geo: GeoProvider, public timer: TimerProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
       const keyUs= this.navParams.get('key');
       this.key = keyUs;
@@ -86,6 +86,8 @@ export class HomePage {
 }
 
 logout(){
+  this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
+  console.log('Sale del timer')
   const key = firebase.auth().currentUser.uid;
   this.afDatabase.database.ref(`locations/${key}`).remove();
   this.fire.auth.signOut();

@@ -11,6 +11,7 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ModalPerfilPage } from '../modal-perfil/modal-perfil';
 import { Storage } from '@ionic/storage';
+import { TimerProvider } from '../../providers/timer/timer';
 
 @IonicPage()
 @Component({
@@ -29,23 +30,26 @@ export class MapaPage {
   zoom: number = 16;
   markers: any;
   title: string = 'Habla con alguien';
-
+  tarea;
+  a = 0;
 
   constructor(private fire: AngularFireAuth, public zone: NgZone, public storage: Storage,
     private afDatabase: AngularFireDatabase, private geo: GeoProvider, public navCtrl: NavController,
-    public navParams: NavParams, private modal: ModalController) {
- 
-    
+    public navParams: NavParams, private modal: ModalController, public timer: TimerProvider) {
+   
     //Se recupera la variable id de storage que contiene la UID del usuario actual
     this.storage.get("id").then(val => {
         this.key2 = val;
         console.log('la llave 2 en mapa es: '+ this.key2)
       })
-
+      this.geo.refUb(this.key2);  
 
   }//Cierra el constructor
 
+
+
   public ngOnInit() {
+    
     this.fire.authState.take(1).subscribe(data => {
       this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
       this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) => {
@@ -58,6 +62,7 @@ export class MapaPage {
     this.getUserLocation();
     this.geo.hits.subscribe(hits =>
       this.markers = hits)
+      
   }//cierra la función ngOnInit
 
 
@@ -90,6 +95,8 @@ export class MapaPage {
   tutorial(){
     this.navCtrl.push(TutorialPage);
   }
+
+
 
 }//Cierra la clase MapaPage
 

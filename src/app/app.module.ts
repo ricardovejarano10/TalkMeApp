@@ -36,6 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 //=================Providers====================================//
 import { TiendaDataProvider } from '../providers/tienda-data/tienda-data';
 import { GeoProvider } from '../providers/geo/geo';
+import { TimerProvider } from '../providers/timer/timer';
 
 
 export const firebaseConfig = {
@@ -95,7 +96,8 @@ export const firebaseConfig = {
     //File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GeoProvider,
-    TiendaDataProvider
+    TiendaDataProvider,
+    TimerProvider
   ]
 })
 export class AppModule {}
