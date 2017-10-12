@@ -4,6 +4,7 @@ import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../../providers/geo/geo';
 import { Perfil } from '../../models/perfil';
+import { TutorialPage } from '../tutorial/tutorial';
 import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
@@ -21,7 +22,6 @@ export class MapaPage {
   perfilAmigos: any;
   imgsource: any;
   firestore = firebase.storage();
-  key;
   keyPropio: any;
   key2;
   lat: number;
@@ -29,39 +29,23 @@ export class MapaPage {
   zoom: number = 16;
   markers: any;
   title: string = 'Habla con alguien';
-  user: any;
-  a = 0;
+
 
   constructor(private fire: AngularFireAuth, public zone: NgZone, public storage: Storage,
     private afDatabase: AngularFireDatabase, private geo: GeoProvider, public navCtrl: NavController,
     public navParams: NavParams, private modal: ModalController) {
-   // const keyUs = navParams.data;  
-   // this.key = keyUs;  
+ 
+    
+    //Se recupera la variable id de storage que contiene la UID del usuario actual
+    this.storage.get("id").then(val => {
+        this.key2 = val;
+        console.log('la llave 2 en mapa es: '+ this.key2)
+      })
 
 
-
-  }
-
-
+  }//Cierra el constructor
 
   public ngOnInit() {
-
-    var user = firebase.auth().currentUser;
-    if(user){
-          
-          this.storage.set("id", user.uid);
-     
-    }
-
-    this.storage.get("id").then(val => {
-      this.key2 = val;
-      console.log('Antes de almacenar: '+user.uid)
-      console.log('la llave 2 es: '+ this.key2)
-    })
-
-
-
-
     this.fire.authState.take(1).subscribe(data => {
       this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
       this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) => {
@@ -71,24 +55,10 @@ export class MapaPage {
       })
     })
 
-        
-
-     
-     //console.log('A a pagina de mapa esta llegando la clave: ' + this.key2);
-
-    //var user = firebase.auth().currentUser;
-    //this.key = user.uid;
     this.getUserLocation();
-    // console.log('El uid del usuario actual es: '+this.key);
     this.geo.hits.subscribe(hits =>
       this.markers = hits)
-
-
-  }
-  refresh() {
-    this.ngOnInit();
-  }
-
+  }//cierra la función ngOnInit
 
 
   private getUserLocation() {
@@ -103,24 +73,23 @@ export class MapaPage {
           this.geo.setLocation(data.uid, [this.lat, this.lng]);
         })
       });
-
     }
+  }//Cierra la función grtUserLocation
 
-  }
 
   abrirModalPerfil(key: string) {
     var nombre: any = firebase.database().ref('/perfil/' + key).once('value').then(function (snapshot) {
       var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
       var nombreDeAmigos = username;
       console.log("El nombre de usuario es: " + nombreDeAmigos);
-
     });
-
     const myModal = this.modal.create('ModalPerfilPage', { key: key });
     myModal.present();
+  }//Cierra la función abrirModalPerfil
+
+  tutorial(){
+    this.navCtrl.push(TutorialPage);
   }
 
-
-
-}
+}//Cierra la clase MapaPage
 

@@ -38,6 +38,7 @@ export class LoginPage {
       const key = firebase.auth().currentUser.uid;
       this.key = key;
       console.log('La pagina de login pasa la siguiente llave: '+ this.key);
+      this.storage.set("id", this.key);
       this.navCtrl.setRoot(HomePage, {key:this.key});
     })
     .catch(function(error) {

@@ -25,7 +25,7 @@
           <!-- <div *ngIf="marker.key != keyUsuario"> -->
           <agm-marker [latitude]="marker.location[0]" [longitude]="marker.location[1]"
               [iconUrl]="'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-32.png'"
-              *ngIf="marker.key != key" >
+              *ngIf="marker.key != key2" >
           
             <agm-info-window>
               <h3><strong>Quieres hablarme?</strong></h3>
@@ -41,13 +41,19 @@
     </agm-map>
   </div>
   
-  <div class="login-title">  
+  <!-- <div class="login-title">  
     <h4 class="login-title-font">{{ title }}</h4>
-    <!-- <button (click)="refresh()" ion-button color="light" margin-top>Refrescar Mapa</button> -->
-  </div>  
-  <div>
-    <!-- {{perfilAmigos.nickname}} -->
-  </div>
+    </div>   -->
+
 
 </ion-content>
+
+<ion-footer>
+  
+      <div id="footer">
+        
+        <div><button ion-button block color="forApp" (click)="tutorial()">Tutorial</button></div>
+      </div>
+  
+  </ion-footer>
 
