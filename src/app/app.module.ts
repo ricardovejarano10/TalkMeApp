@@ -4,14 +4,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
-
-
 import { MyApp } from './app.component';
-
+import { IonicStorageModule } from '@ionic/storage';
+//============Importes para cargar imagen ====================//
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
 
+
+//============Importe de las paginas ========================//
 import { ModalPerfilPage } from '../pages/modal-perfil/modal-perfil';
 import { LoginPage } from '../pages/login/login';
 import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -19,18 +20,23 @@ import { ChatPage } from '../pages/chat/chat';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { TiendaPage } from '../pages/tienda/tienda';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
-
 import { PerfilPage } from '../pages/perfil/perfil';
 import { MapaPage } from '../pages/mapa/mapa';
 import { HomePage } from '../pages/home/home';
+
+//================Firebase=================================//
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+//===============Mapa y geolocalización ==========================//
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GeoProvider } from '../providers/geo/geo';
-import { IonicStorageModule } from '@ionic/storage';
+
+//=================Providers====================================//
 import { TiendaDataProvider } from '../providers/tienda-data/tienda-data';
+import { GeoProvider } from '../providers/geo/geo';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDcfcEziwRVc99v-3JufSLhMYXnsummMeA",

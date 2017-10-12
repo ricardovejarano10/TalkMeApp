@@ -24,8 +24,8 @@ export class TutorialPage {
       image: "assets/img/marcador.png",
     },
     {
-      title: "Primero lo primero",
-      description: "<b>Edita tu perfil</b> en el menu, entra la opción perfil => edita perfil y llena tus datos ... No olvides una buena foto",
+      title: "Edita tu perfil",
+      description: "En el menu lateral, entra a la opción perfil => edita perfil y llena tus datos ... No olvides una buena foto",
       image: "assets/img/perfilSlide.png",
     },
     {
