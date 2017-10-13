@@ -37,7 +37,7 @@ export class HomePage {
 
   menuOpc: Menu[] = [
     { label: 'Perfil', icon: 'md-person' },
-    { label: 'Amigos', icon: 'md-contacts' },
+    { label: 'Recientes', icon: 'md-contacts' },
     { label: 'Tienda', icon: 'md-cart' }
 
   ]

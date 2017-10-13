@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content [attr.noScroll]="shouldScroll">
-
+    <ion-fab top right edge>
+  <button ion-fab color="secondary" (click)="tutorial()"><ion-icon name="md-help"></ion-icon></button>
+      </ion-fab>
   <div class="map-wrapper">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
         <agm-marker [latitude]="lat" [longitude]="lng"
@@ -40,20 +42,13 @@
 
     </agm-map>
   </div>
-  
-  <!-- <div class="login-title">  
-    <h4 class="login-title-font">{{ title }}</h4>
-    </div>   -->
-
 
 </ion-content>
 
 <ion-footer>
   
-      <div id="footer">
-        <div><button ion-button block color="forApp" (click)="recargar()">Recarga el Mapa</button></div>
-        <div><button ion-button block color="forApp" (click)="tutorial()">Tutorial</button></div>
-      </div>
-  
-  </ion-footer>
+      <div>
+        <button ion-button large color="forApp" class="footer" (click)="recargar()">Recarga el Mapa</button>
+       </div>
+</ion-footer>
 

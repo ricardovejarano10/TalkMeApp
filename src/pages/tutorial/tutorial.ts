@@ -31,7 +31,7 @@ export class TutorialPage {
     {
       title: "Cómo sé quien es cada quien?",
       description: "<b>Un toque</b> en cualquier marcador rojo del mapa basta para que conozcas el perfil de cualquier persona",
-      image: "assets/img/mano.jpg",
+      image: "assets/img/mano.png",
     }
   ];
 
