@@ -103,7 +103,11 @@ export class MapaPage {
       content: 'Cargando mapa...',
     });
     loader.present(); 
-    history.go(0);
+  //  history.go(0);
+  this.getUserLocation();
+  this.markers = null;
+  this.geo.hits.subscribe(hits =>
+    this.markers = hits)
     loader.dismiss();
     //window.location.reload();
     //this.markers = null;
