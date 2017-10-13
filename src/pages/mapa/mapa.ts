@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events, LoadingController } from 'ionic-angular';
 import { AgmCoreModule } from '@agm/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoProvider } from '../../providers/geo/geo';
@@ -36,7 +36,7 @@ export class MapaPage {
 
   constructor(private fire: AngularFireAuth, public zone: NgZone, public storage: Storage,
     private afDatabase: AngularFireDatabase, private geo: GeoProvider, public navCtrl: NavController,
-    public navParams: NavParams, private modal: ModalController,
+    public navParams: NavParams, private modal: ModalController, public loadingCtrl: LoadingController,
     public timer: TimerProvider, public event:Events) {
    
     //Se recupera la variable id de storage que contiene la UID del usuario actual
@@ -99,7 +99,13 @@ export class MapaPage {
   }
 
   recargar(){
-    window.location.reload();
+    let loader = this.loadingCtrl.create({
+      content: 'Cargando mapa...',
+    });
+    loader.present(); 
+    history.go(0);
+    loader.dismiss();
+    //window.location.reload();
     //this.markers = null;
     //this.ngOnInit();
   }
