@@ -86,10 +86,7 @@ export class HomePage {
 }
 
 logout(){
-  this.event.subscribe('marcador', (data) => {
-    data = clearInterval(data);
-    console.log('Timer detenido');
-  })
+
   //this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
   //console.log('Sale del timer')
   const key = firebase.auth().currentUser.uid;

@@ -29,7 +29,7 @@ export class TutorialPage {
       image: "assets/img/perfilSlide.png",
     },
     {
-      title: "Cómo se quien es cada quien?",
+      title: "Cómo sé quien es cada quien?",
       description: "<b>Un toque</b> en cualquier marcador rojo del mapa basta para que conozcas el perfil de cualquier persona",
       image: "assets/img/mano.jpg",
     }

@@ -44,18 +44,7 @@ export class MapaPage {
         this.key2 = val;
         console.log('la llave 2 en mapa es: '+ this.key2)
       })
-
-      this.tarea = setInterval(() => {
-        this.a = this.a +1;
-        console.log('El valor de a es: '+this.a)
-        this.ngOnInit();
-        this.event.publish('marcador', this.tarea)
-      },5000);
-
-
-
-      //this.geo.refUb(this.key2);  
-
+      this.ngOnInit();
   }//Cierra el constructor
 
 
@@ -70,8 +59,9 @@ export class MapaPage {
         })
       })
     })
-    
+   // this.markers = [];
     this.getUserLocation();
+    
     this.geo.hits.subscribe(hits =>
       this.markers = hits)
       
@@ -106,6 +96,12 @@ export class MapaPage {
 
   tutorial(){
     this.navCtrl.push(TutorialPage);
+  }
+
+  recargar(){
+    window.location.reload();
+    //this.markers = null;
+    //this.ngOnInit();
   }
 
 
