@@ -7,6 +7,8 @@ import { PerfilPage } from '../perfil/perfil';
 import firebase from 'firebase';
 import { MapaPage } from '../mapa/mapa';
 import { ChatPage } from '../chat/chat';
+import { Storage } from '@ionic/storage';
+import { DatosUsuarioProvider } from '../../providers/datos-usuario/datos-usuario';
 
 
 @IonicPage()
@@ -19,10 +21,11 @@ export class ModalPerfilPage {
   perfilDatos: FirebaseObjectObservable<Perfil>
   imgsource: any;
   firestore = firebase.storage();
+  keyPropia;
 
   constructor(private view:ViewController,
-              public zone: NgZone,
-              private afDatabase: AngularFireDatabase,
+              public zone: NgZone, public datosUsuario: DatosUsuarioProvider,
+              private afDatabase: AngularFireDatabase,public storage: Storage,
               public navCtrl: NavController, public navParams: NavParams,) {
   }
 
@@ -41,9 +44,25 @@ export class ModalPerfilPage {
   }
 
   chatear(){
-   // this.view.dismiss();
    const keyUs = this.navParams.get('key');
-    this.navCtrl.setRoot(ChatPage, {keyUs:keyUs});
+
+   //se agrega una lista de amigos 
+   this.storage.get("id").then(val => {
+    this.keyPropia = val;
+    console.log('La UID propia en modal es: '+ this.keyPropia);
+    console.log('La UID del usuario a chatear es: '+ keyUs)
+
+    this.firestore.ref().child(`image/${keyUs}`).getDownloadURL().then((url) =>{
+      this.zone.run(() => {
+        this.imgsource = url;
+      })
+    })
+
+
+     this.datosUsuario.obtenerDatos(this.keyPropia, keyUs, this.imgsource);
+  })
+
+   this.navCtrl.setRoot(ChatPage, {keyUs:keyUs});
     
   }
 }

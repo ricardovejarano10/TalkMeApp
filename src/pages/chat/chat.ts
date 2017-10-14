@@ -72,7 +72,7 @@ export class ChatPage {
 }
 
 cerrarChat(){
-  this.navCtrl.pop();
+  this.navCtrl.setRoot(HomePage);
 }
 
   ionViewDidLoad() { }

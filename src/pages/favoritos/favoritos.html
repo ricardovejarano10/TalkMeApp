@@ -1,14 +1,26 @@
 <ion-header>
+    <ion-navbar color="forApp">
+      <ion-title>Recientes</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        Conversaciones recientes
+      </ion-list-header>
+  
+       <div *ngFor="let amigo of amigos"> 
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{amigo.url}}">
+        </ion-avatar>
+        <h2>{{amigo.nombre}} {{amigo.apellido}}</h2>
+        <p>{{amigo.nombreUsuario}}</p>
+        <button ion-button clear item-end color="forApp" (click)="chat(amigo.key)">Chat</button>
+      </ion-item>
+      </div>
+    </ion-list>
+ 
 
-  <ion-navbar color="forApp">
-    <ion-title>Recientes</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-
-
-</ion-content>
+  </ion-content>

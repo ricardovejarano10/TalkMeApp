@@ -17,7 +17,6 @@ import { GeoProvider } from '../../providers/geo/geo';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { FilePath } from '@ionic-native/file-path';
-import { TimerProvider } from '../../providers/timer/timer';
 
 @Component({
   selector: 'page-home',
@@ -47,11 +46,10 @@ export class HomePage {
     public fch: FileChooser,
     public zone: NgZone, public event: Events,
     public navParams: NavParams,
-    public storage: Storage,private geo: GeoProvider, public timer: TimerProvider,
+    public storage: Storage,private geo: GeoProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
       const keyUs= this.navParams.get('key');
       this.key = keyUs;
-      console.log('A la pagina home está llegando la clave: '+this.key);
   }
 
   ionViewDidLoad() {

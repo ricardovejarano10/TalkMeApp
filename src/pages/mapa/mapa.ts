@@ -11,7 +11,6 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ModalPerfilPage } from '../modal-perfil/modal-perfil';
 import { Storage } from '@ionic/storage';
-import { TimerProvider } from '../../providers/timer/timer';
 
 @IonicPage()
 @Component({
@@ -19,38 +18,31 @@ import { TimerProvider } from '../../providers/timer/timer';
   templateUrl: 'mapa.html',
 })
 export class MapaPage {
-  perfilDatos: FirebaseObjectObservable<Perfil>
-  perfilAmigos: any;
-  imgsource: any;
-  firestore = firebase.storage();
-  keyPropio: any;
-  key2;
-  lat: number;
-  lng: number;
-  zoom: number = 16;
-  markers: any;
-  markersGeo: any;
-  title: string = 'Habla con alguien';
-  tarea;
-  a = 0;
+  perfilDatos: FirebaseObjectObservable<Perfil> //Se cargan los datos de la persona en sesión
+  imgsource: any; // URL de la imagen del usuario
+  firestore = firebase.storage(); // Acceso al storage de firebase 
+  key2; //  UID del usuario que está en sesión
+  lat: number;  // Latitud del usuario que está en sesión
+  lng: number;  // Longitud del usuario que está en sesión 
+  zoom: number = 16;  // Valor por defecto del zoom cuando se inicializa el mapa
+  markers = [];  // Se guardan las ubicaciones de los usuarios externos
+  borrar = 0;  // Variable temporar para evaluar markers
 
   constructor(private fire: AngularFireAuth, public zone: NgZone, public storage: Storage,
     private afDatabase: AngularFireDatabase, private geo: GeoProvider, public navCtrl: NavController,
     public navParams: NavParams, private modal: ModalController, public loadingCtrl: LoadingController,
-    public timer: TimerProvider, public event:Events) {
-   
+     public event: Events) {
+
     //Se recupera la variable id de storage que contiene la UID del usuario actual
     this.storage.get("id").then(val => {
-        this.key2 = val;
-        console.log('la llave 2 en mapa es: '+ this.key2)
-      })
-      this.ngOnInit();
+      this.key2 = val;
+    })
+    this.ngOnInit();
   }//Cierra el constructor
 
 
-
   public ngOnInit() {
-    
+    //Con las siguientes lineas, obtenermos la url de descarga de la imagen de perfil
     this.fire.authState.take(1).subscribe(data => {
       this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
       this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) => {
@@ -58,13 +50,18 @@ export class MapaPage {
           this.imgsource = url;
         })
       })
-    })
-   // this.markers = [];
+    })//Cierra la función de URL de imagen
+
+    //Se llama la función para obtener la ubicación del usuario
     this.getUserLocation();
-    
-    this.geo.hits.subscribe(hits =>
-      this.markers = hits)
-      
+
+    // Se obtienen todos los hits en la variable markers, markers que corresponden a las ubicaciones
+    // distancias y llaves de los usuarios.
+    this.geo.hits.subscribe(hits => {
+      this.markers = hits;
+      console.log(this.markers)
+    })
+
   }//cierra la función ngOnInit
 
 
@@ -88,30 +85,29 @@ export class MapaPage {
     var nombre: any = firebase.database().ref('/perfil/' + key).once('value').then(function (snapshot) {
       var username = (snapshot.val() && snapshot.val().nickname) || 'Anonymous';
       var nombreDeAmigos = username;
-      console.log("El nombre de usuario es: " + nombreDeAmigos);
     });
     const myModal = this.modal.create('ModalPerfilPage', { key: key });
     myModal.present();
   }//Cierra la función abrirModalPerfil
 
-  tutorial(){
+  tutorial() {
     this.navCtrl.push(TutorialPage);
   }
 
-  recargar(){
+  recargar() {
     let loader = this.loadingCtrl.create({
-      content: 'Cargando mapa...',
+      content: 'Recargando mapa...',
     });
-    loader.present(); 
-  //  history.go(0);
-  this.getUserLocation();
-  this.markers = null;
-  this.geo.hits.subscribe(hits =>
-    this.markers = hits)
+    loader.present();
+    // this.geo.hits.subscribe(hits =>
+    // this.markers = [])
+    //this.markers = [];
+    history.go(0);
+    //this.tam = this.markers.length;
+    //this.getUserLocation();
     loader.dismiss();
     //window.location.reload();
-    //this.markers = null;
-    //this.ngOnInit();
+    //history.go(0);
   }
 
 
