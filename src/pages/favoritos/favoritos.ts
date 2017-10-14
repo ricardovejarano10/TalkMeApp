@@ -34,7 +34,7 @@ export class FavoritosPage {
     })
   }
   chat(key:string){
-    this.navCtrl.setRoot(ChatPage, {keyUs:key});
+    this.navCtrl.push(ChatPage, {keyUs:key});
 
   }
 

@@ -61,8 +61,8 @@ export class ModalPerfilPage {
 
      this.datosUsuario.obtenerDatos(this.keyPropia, keyUs, this.imgsource);
   })
-
-   this.navCtrl.setRoot(ChatPage, {keyUs:keyUs});
+   this.navCtrl.push(ChatPage, {keyUs:keyUs});
+   
     
   }
 }
