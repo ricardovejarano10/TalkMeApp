@@ -1,6 +1,5 @@
 page-login {
 
-    //se define la fuente a utilizar 
     .buttonLogin{
        color: #af0f0f;
     }
@@ -14,7 +13,7 @@ page-login {
     }
 
     .buttons{
-        padding-top: 30px;
+        padding-top: 0px;
     }
 
     .login-title-font{
@@ -47,6 +46,10 @@ page-login {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover; 
+     }
+
+     div.login-main{
+         height: 70%;
      }
 
 }

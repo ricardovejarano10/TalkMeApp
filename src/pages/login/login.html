@@ -6,24 +6,32 @@
         <h1 class="login-title-font">TalkMe</h1>
       </div>
 
-    <div class="form">  
-      <ion-item color="itemLight">
-        <ion-label color="light" floating>Correo</ion-label>
-        <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
-      </ion-item>
+      <div class="form">
 
-      <ion-item color="itemLight">
-          <ion-label color="light" floating>Contraseña</ion-label>
-          <ion-input type="password" color="primary" name="pass" [(ngModel)]="usuario.password" required></ion-input>
-      </ion-item>
+        <ion-row>
+          <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+            <ion-item ion-col col-12 color="itemLight">
+              <ion-label color="light" floating>Correo</ion-label>
+              <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+            <ion-item color="itemLight">
+              <ion-label color="light" floating>Contraseña</ion-label>
+              <ion-input type="password" color="primary" name="pass" [(ngModel)]="usuario.password" required></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+      
     </div>
 
   </div>
-
-  <div text-center class="buttons">  
-    <button ion-col col-12 ion-button round (click)="login(usuario)"  class="buttonLogin" color="light">Iniciar Sesión</button>
-    <button ion-button col-12 clear color="light" (click)="registro()" class="buttonRegistro">Registro</button>
+  <div class="buttons">
+    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round (click)="login(usuario)" class="buttonLogin" color="light">Iniciar Sesión</button>
+    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button clear color="light" (click)="registro()" class="buttonRegistro">Registro</button>
   </div>
+
   
-  </div> <!-- cierra la clase login-main -->
+  <!-- cierra la clase login-main -->
 </ion-content>
