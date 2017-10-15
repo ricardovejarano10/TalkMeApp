@@ -93,7 +93,6 @@ export const firebaseConfig = {
     FileChooser,
     Geolocation,
     FilePath,
-    //File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GeoProvider,
     TiendaDataProvider,
