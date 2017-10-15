@@ -11,7 +11,7 @@ import firebase from 'firebase';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { MapaPage } from '../mapa/mapa';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @IonicPage()
@@ -28,7 +28,7 @@ export class PerfilPage {
   estadoPerfil: FirebaseObjectObservable<Perfil[]>;
   estado: Perfil[] ;
 
-  constructor(private fire: AngularFireAuth , 
+  constructor(private fire: AngularFireAuth , private localNotifications: LocalNotifications,
     public alertCtrl: AlertController ,
     public loadingCtrl: LoadingController,
     public fch: FileChooser,
@@ -101,6 +101,12 @@ export class PerfilPage {
       .then(() => this.navCtrl.setRoot(HomePage, {key:auth.uid}));
                   alert.present();  
     })
+
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Single ILocalNotification'
+    });
+    
 
   }
 }

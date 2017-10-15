@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 //============Importes para cargar imagen ====================//
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
@@ -93,6 +94,7 @@ export const firebaseConfig = {
     FileChooser,
     Geolocation,
     FilePath,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GeoProvider,
     TiendaDataProvider,
