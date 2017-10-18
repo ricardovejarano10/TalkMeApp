@@ -51,6 +51,7 @@ export class ChatPage {
       key: this.key,
       username: this.username,
       message: this.message
+      //new: 0
       }).then(() => {
         //Lo que sucede si se hace la actualización correcta
       }).catch(()=>{
@@ -61,6 +62,7 @@ export class ChatPage {
         key: this.key,
         username: this.username,
         message: this.message
+        //new: 1
         }).then(() => {
           //Lo que sucede si se hace la actualización correcta
         }).catch(()=>{

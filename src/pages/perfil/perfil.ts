@@ -104,7 +104,7 @@ export class PerfilPage {
 
     this.localNotifications.schedule({
       id: 1,
-      text: 'Single ILocalNotification'
+      text: 'Recibiste un nuevo mensaje'
     });
     
 
