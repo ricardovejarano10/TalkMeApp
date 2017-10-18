@@ -10,7 +10,7 @@
 
         <ion-row>
           <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
-            <ion-item ion-col col-12 color="itemLight">
+            <ion-item color="itemLight">
               <ion-label color="light" floating>Correo</ion-label>
               <ion-input type="email" name="email" [(ngModel)]="usuario.email" required></ion-input>
             </ion-item>
@@ -23,15 +23,15 @@
           </ion-col>
         </ion-row>
       </div>
-      
-    </div>
 
-  </div>
-  <div class="buttons">
-    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round (click)="login(usuario)" class="buttonLogin" color="light">Iniciar Sesión</button>
-    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button clear color="light" (click)="registro()" class="buttonRegistro">Registro</button>
-  </div>
+    </div>
 
   
   <!-- cierra la clase login-main -->
+  <div class="buttons" margin-top>
+    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round (click)="login(usuario)" class="buttonLogin"
+      color="light">Iniciar Sesión</button>
+    <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button clear color="light" (click)="registro()" class="buttonRegistro">Registro</button>
+  </div>
+</div>
 </ion-content>

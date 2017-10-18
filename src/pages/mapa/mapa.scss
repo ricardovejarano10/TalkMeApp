@@ -12,6 +12,9 @@ page-mapa {
  
           height: 455px;
       }
+      div.map-wrapper{
+          min-height: 100%;
+      }
 
       agm-map {
         width: 100%;
