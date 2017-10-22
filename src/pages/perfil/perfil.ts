@@ -104,7 +104,7 @@ export class PerfilPage {
 
     this.localNotifications.schedule({
       id: 1,
-      text: 'Recibiste un nuevo mensaje'
+      text: 'Tu información fue actualizada!'
     });
     
 
