@@ -44,7 +44,7 @@ export class GeoProvider {
       radius: radius
     })
     .on('key_entered', (key, location, distance) => {
-              
+            
       let hit = {
         location: location,
         distance: distance,

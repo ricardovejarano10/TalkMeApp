@@ -1,3 +1,62 @@
 page-perfil {
+    .buttonLogin{
+        color: #af0f0f;
+     }
+     .login-title{
+         height:100px;
+         padding-top: 80px;
+     }
+ 
+     .form{
+         padding-top: 10px;
+     }
+ 
+     .buttons{
+         padding-top: 0px;
+     }
+ 
+     .login-title-font{
+         font-family: bernadetteFont;
+         color: #af0f0f;
+         //color: #af0f0f;
+         font-size: 4.5em;  
+         text-shadow: 2px 2px #403A3A;
+     }
+ 
+     //login-main contiene toda la columna
+     .login-main{
+         display: flex;
+         flex-direction: column;
+         height: 100%;
+     }
+ 
+     //espacio del formulario
+     .login-form{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         flex: 1;
+     }
+ 
+     //estilo para el fondo de pantalla de login
+     .login-bg{
+         //background-color: white;
+         background-image: url('../assets/img/login_fondo.jpg');
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: cover; 
+      }
+ 
+      div.login-main{
+          height: 70%;
+      }
 
+      div.fixed-content{
+        background-color: #C0C0C0;
+    }
+
+    div.login-title{
+        padding-top: 30px;
+    }
+ 
 }

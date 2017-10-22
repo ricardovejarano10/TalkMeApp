@@ -24,15 +24,15 @@ import { FilePath } from '@ionic-native/file-path';
 })
 
 export class HomePage {
-  root:any = MapaPage;
+  root: any = MapaPage;
   nativepath: any;
   firestore = firebase.storage();
   perfilDatos: FirebaseObjectObservable<Perfil>
   imgsource: any;
   estado: any;
   key: string = '';
- 
-  
+
+
 
   menuOpc: Menu[] = [
     { label: 'Perfil', icon: 'md-person' },
@@ -46,57 +46,57 @@ export class HomePage {
     public fch: FileChooser,
     public zone: NgZone, public event: Events,
     public navParams: NavParams,
-    public storage: Storage,private geo: GeoProvider,
+    public storage: Storage, private geo: GeoProvider,
     private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toas: ToastController) {
-      const keyUs= this.navParams.get('key');
-      this.key = keyUs;
+    const keyUs = this.navParams.get('key');
+    this.key = keyUs;
   }
 
   ionViewDidLoad() {
-      this.fire.authState.take(1).subscribe(data => {
-      if(data && data.email && data.uid){  
+    this.fire.authState.take(1).subscribe(data => {
+      if (data && data.email && data.uid) {
         this.perfilDatos = this.afDatabase.object(`perfil/${data.uid}`)
-        }else{
-          this.toas.create({
-            message: `No se encuentra usuario`,
-            duration: 3000
-          }).present();
-        }
-        this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) =>{
-          this.zone.run(() => {
-            this.imgsource = url;
-          })
+      } else {
+        this.toas.create({
+          message: `No se encuentra usuario`,
+          duration: 3000
+        }).present();
+      }
+      this.firestore.ref().child(`image/${data.uid}`).getDownloadURL().then((url) => {
+        this.zone.run(() => {
+          this.imgsource = url;
         })
-       
+      })
+
     })
   }
 
-  setContent(i){
-    switch(i){
-      case 0:this.navCtrl.push(PerfilUsuarioPage);
-      break;
+  setContent(i) {
+    switch (i) {
+      case 0: this.navCtrl.push(PerfilUsuarioPage);
+        break;
       case 1: this.navCtrl.push(FavoritosPage);
-      break;
+        break;
       case 2: this.navCtrl.push(TiendaPage);
-      break;
-    } 
-  
-}
+        break;
+    }
 
-logout(){
+  }
 
-  //this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
-  //console.log('Sale del timer')
-  const key = firebase.auth().currentUser.uid;
-  this.afDatabase.database.ref(`locations/${key}`).remove();
-  this.fire.auth.signOut();
-  this.storage.set("logged", false);
-  this.navCtrl.setRoot(LoginPage);
+  logout() {
+
+    //this.geo.refrescarUbicacion = clearInterval(this.geo.refrescarUbicacion);
+    //console.log('Sale del timer')
+    const key = firebase.auth().currentUser.uid;
+    this.afDatabase.database.ref(`locations/${key}`).remove();
+    this.fire.auth.signOut();
+    this.storage.set("logged", false);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }
 
-interface Menu{
-  label:string;
-  icon:string;
+interface Menu {
+  label: string;
+  icon: string;
 }

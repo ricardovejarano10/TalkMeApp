@@ -6,33 +6,53 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content >
+  <div class="login-main">
+      <div class="login-title" text-center>
+          <h1 class="login-title-font">Tú</h1>
+        </div>
+    <div class="form" text-center>
 
-  <ion-item>
-    <ion-label floating>Nickname</ion-label>
-    <ion-input [(ngModel)]="perfil.nickname" required></ion-input>
-    
-  </ion-item>
+      <ion-row>
+        <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+          <ion-item color="itemLight">
+            <ion-label color="primary"  floating>Nickname</ion-label>
+            <ion-input [(ngModel)]="perfil.nickname" required></ion-input>
 
-  <ion-item>
-    <ion-label floating>Nombre</ion-label>
-    <ion-input [(ngModel)]="perfil.nombre" required></ion-input>
-    
-  </ion-item>
+          </ion-item>
+        </ion-col>
 
-  <ion-item>
-    <ion-label floating>Apellido</ion-label>
-    <ion-input [(ngModel)]="perfil.apellido" required></ion-input>
-    
-  </ion-item>
 
-  <ion-item>
-      <ion-label floating>Edad</ion-label>
-      <ion-input [(ngModel)]="perfil.edad"  type="number" required></ion-input>
-      
-  </ion-item>
+        <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+          <ion-item color="itemLight">
+            <ion-label color="primary"  floating>Nombre</ion-label>
+            <ion-input [(ngModel)]="perfil.nombre" required></ion-input>
 
-  <button ion-col col-12 ion-button round (click)="store()" color="secondary" margin-top>Subir Foto</button>
-  <button ion-col col-12 ion-button round (click)="crearPerfil()" color="forApp" margin-top>Actualizar Perfil</button>
+          </ion-item>
+        </ion-col>
 
+
+        <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+          <ion-item color="itemLight">
+            <ion-label color="primary"  floating>Apellido</ion-label>
+            <ion-input [(ngModel)]="perfil.apellido" required></ion-input>
+
+          </ion-item>
+        </ion-col>
+
+
+        <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+          <ion-item color="itemLight">
+            <ion-label color="primary"  floating>Edad</ion-label>
+            <ion-input [(ngModel)]="perfil.edad" type="number" required></ion-input>
+
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="buttons" margin-top>
+      <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round (click)="store()" color="secondary" margin-top>Subir Foto</button>
+      <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round (click)="crearPerfil()" color="forApp" margin-top>Actualizar Perfil</button>
+    </div>
+  </div>
 </ion-content>

@@ -1,36 +1,42 @@
 <ion-header>
-
-  <ion-navbar color="forApp">
-    <ion-title>Registro</ion-title>
-  </ion-navbar>
-
+    <ion-navbar color="forApp">
+        <ion-title>Registro</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-<div class="login-main">
-    <div text-center>
+    <div class="login-main">
+        <div text-center>
+            <!-- Las letras del titulo de la aplicación en el login -->
+            <div class="login-title">
+                <h1 class="login-title-font">TalkMe</h1>
+            </div>
 
-        <div class="login-title">  
-        <h1 class="login-title-font">TalkMe</h1>
-        </div>  
+            <div class="form">
 
-        <div class="form">
-            <ion-item>
-                <ion-label floating>Correo Electronico</ion-label>  
-                <ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
-            </ion-item>  
-              
-        <ion-item>
-            <ion-label floating>Contraseña</ion-label>  
-            <ion-input type="password" [(ngModel)]="usuario.password"></ion-input>
-        </ion-item> 
+                <ion-row>
+                    <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+                        <ion-item color="itemLight">
+                            <ion-label floating>Correo Electronico</ion-label>
+                            <ion-input type="email" [(ngModel)]="usuario.email"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4>
+                        <ion-item color="itemLight">
+                            <ion-label floating>Contraseña</ion-label>
+                            <ion-input type="password" [(ngModel)]="usuario.password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+              </div>
+        
+            </div>
+        
+        
+            <div class="buttons" margin-top>
+            <button ion-col col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 ion-button round color="forApp" (click)="registro(usuario)">Registrarse</button>
         </div>
-    </div>
-    
-    <div class="buttons">
-    <button ion-col col-12 ion-button round color="forApp" (click)="registro(usuario)">Registrarse</button>
+
     </div>
 
-</div> 
 </ion-content>
